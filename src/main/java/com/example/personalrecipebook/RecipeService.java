@@ -17,26 +17,14 @@ public class RecipeService {
         recipeRepository.save(newRecipe);
     }
 
-    public void RemoveRecipe(Recipe selectedRecipe){
-        recipeRepository.deleteById(selectedRecipe.getiD());
+    public void RemoveRecipeByID(Long id){
+        if(recipeRepository.existsById(id)){
+            recipeRepository.deleteById(id);
+        }
     }
 
     public Iterable<Recipe> ShowAllRecipes(){
         return recipeRepository.findAll();
-    }
-
-    public Optional<Recipe> ShowRecipe(Recipe selectedRecipe){
-        Optional<Recipe> result = Optional.of(new Recipe());
-        if (recipeRepository.existsById(selectedRecipe.getiD())){
-            result = recipeRepository.findById(selectedRecipe.getiD());
-        }
-        return result;
-    }
-
-    public void UpdateRecipe(Recipe selectedRecipe) {
-        if (recipeRepository.existsById(selectedRecipe.getiD())) {
-            recipeRepository.save(selectedRecipe);
-        }
     }
 
     public Optional<Recipe> ShowRecipeByID(Long id){
@@ -46,5 +34,13 @@ public class RecipeService {
         }
         return result;
     }
+
+    public void UpdateRecipe(Recipe selectedRecipe, Long id) {
+        if (recipeRepository.existsById(id) && id.equals(selectedRecipe.getiD())) {
+            recipeRepository.save(selectedRecipe);
+        }
+    }
+
+
 
 }
