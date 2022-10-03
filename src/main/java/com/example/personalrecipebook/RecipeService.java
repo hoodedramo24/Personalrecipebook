@@ -1,5 +1,6 @@
 package com.example.personalrecipebook;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -7,6 +8,7 @@ import java.util.Optional;
 @Service
 public class RecipeService {
 
+    @Autowired
     final RecipeRepository recipeRepository;
     public RecipeService(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
