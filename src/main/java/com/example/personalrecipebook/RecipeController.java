@@ -10,9 +10,9 @@ import java.util.Optional;
 @RequestMapping("/recipes")
 public class RecipeController {
 
+    //DI for Recipe Service Class
     @Autowired
     final RecipeService recipeService;
-
     public RecipeController(RecipeService recipeService) {
         this.recipeService = recipeService;
     }
