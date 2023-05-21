@@ -1,9 +1,6 @@
 package com.example.personalrecipebook;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Recipe {
@@ -11,7 +8,9 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long iD;
     private String title;
+    @Column(length = 5000)
     private String ingredients;
+    @Column(length = 5000)
     private String directions;
 
     public Recipe(String title, String ingredients, String directions) {
